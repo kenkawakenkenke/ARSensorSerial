@@ -1,18 +1,3 @@
-/*
- * Copyright 2018 Google LLC. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.ken.arsensorduino;
 
 import android.os.Bundle;
@@ -52,6 +37,7 @@ public class ArSensorActivity extends AppCompatActivity {
     if (frame == null || frame.getCamera().getTrackingState() != TrackingState.TRACKING) {
       return;
     }
+
     Integer latestValue = serialReader.fetchLatestValue();
     if (latestValue == null) {
       return;
@@ -69,7 +55,7 @@ public class ArSensorActivity extends AppCompatActivity {
 
   private void plotPoint(Vector3 position, float value) {
     float hue = MathUtil.map(value, MIN_VALUE, MAX_VALUE, MIN_HUE, MAX_HUE);
-    Color color = new Color(ColorUtil.HSBtoRGB(hue, 1, 1));
+    Color color = new Color(ColorUtil.hsvToRgb(hue, 1, 1));
 
     MaterialFactory.makeOpaqueWithColor(this, color).thenAccept(material -> {
       Node node = new Node();
