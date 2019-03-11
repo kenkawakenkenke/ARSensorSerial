@@ -1,18 +1,18 @@
 package com.ken.arsensorduino;
 
+import static com.ken.arsensorduino.util.MathUtil.map;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.google.ar.core.Frame;
 import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.FrameTime;
 import com.google.ar.sceneform.Node;
-import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.Color;
 import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.ken.arsensorduino.util.ColorUtil;
-import com.ken.arsensorduino.util.MathUtil;
 
 public class ArSensorActivity extends AppCompatActivity {
 
@@ -39,26 +39,18 @@ public class ArSensorActivity extends AppCompatActivity {
     if (latestValue == null) {
       return;
     }
-    Vector3 position = arFragment.getArSceneView().getScene().getCamera().getWorldPosition();
-
-    plotPoint(position, latestValue);
+    plotPoint(latestValue);
   }
 
-  private static final int MIN_VALUE = 80;
-  private static final int MAX_VALUE = 110;
-  private static final float MIN_HUE = 1 / 3f;
-  private static final float MAX_HUE = 0;
-  private static final float RADIUS = 0.01f;
-
-  private void plotPoint(Vector3 position, float value) {
-    float hue = MathUtil.map(value, MIN_VALUE, MAX_VALUE, MIN_HUE, MAX_HUE);
-    Color color = new Color(ColorUtil.hsvToRgb(hue, 1, 1));
+  private void plotPoint(float value) {
+    // センサの値（80~110）を色相（緑~赤)にマッピングする。
+    Color color = ColorUtil.fromHue(map(value, 80, 110, 1 / 3f, 0f));
 
     MaterialFactory.makeOpaqueWithColor(this, color).thenAccept(material -> {
       Node node = new Node();
       node.setRenderable(ShapeFactory.makeSphere(
-          RADIUS,
-          position,
+          /* radius= */ 0.01f,
+          /* position= */ arFragment.getArSceneView().getScene().getCamera().getWorldPosition(),
           material));
       arFragment.getArSceneView().getScene().addChild(node);
     });
