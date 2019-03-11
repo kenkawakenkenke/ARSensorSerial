@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.google.ar.core.Frame;
 import com.google.ar.core.TrackingState;
-import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.FrameTime;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.math.Vector3;
@@ -18,7 +17,6 @@ import com.ken.arsensorduino.util.MathUtil;
 public class ArSensorActivity extends AppCompatActivity {
 
   private ArFragment arFragment;
-  private final AnchorNode anchorNode = new AnchorNode();
   private final SerialReader serialReader = new SerialReader();
 
   @Override
@@ -28,7 +26,6 @@ public class ArSensorActivity extends AppCompatActivity {
 
     serialReader.start(this);
     arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
-    arFragment.getArSceneView().getScene().addChild(anchorNode);
     arFragment.getArSceneView().getScene().addOnUpdateListener(this::onUpdate);
   }
 
@@ -51,7 +48,7 @@ public class ArSensorActivity extends AppCompatActivity {
   private static final int MAX_VALUE = 110;
   private static final float MIN_HUE = 1 / 3f;
   private static final float MAX_HUE = 0;
-  private static final float RADIUS = 0.03f;
+  private static final float RADIUS = 0.01f;
 
   private void plotPoint(Vector3 position, float value) {
     float hue = MathUtil.map(value, MIN_VALUE, MAX_VALUE, MIN_HUE, MAX_HUE);
@@ -63,7 +60,7 @@ public class ArSensorActivity extends AppCompatActivity {
           RADIUS,
           position,
           material));
-      anchorNode.addChild(node);
+      arFragment.getArSceneView().getScene().addChild(node);
     });
   }
 }
