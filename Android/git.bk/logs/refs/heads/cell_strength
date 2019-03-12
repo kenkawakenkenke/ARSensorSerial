@@ -1,8 +1,0 @@
-0000000000000000000000000000000000000000 390024f94b2b75ac96e3532fbbb43d76d95ec9d0 Ken Kawamoto <ken@kawamoto.co.uk> 1546739259 +0900	branch: Created from HEAD
-390024f94b2b75ac96e3532fbbb43d76d95ec9d0 46a6895c8258d7d93d804020fdaa183e5f3a03ce Ken Kawamoto <ken@kawamoto.co.uk> 1546750305 +0900	commit: Adds support for LTE
-46a6895c8258d7d93d804020fdaa183e5f3a03ce a609ff4f18ef4f898804efe9476d21bcb32898d7 Ken Kawamoto <ken@kawamoto.co.uk> 1546753633 +0900	commit: Adds status messages to show errors and sensor status
-a609ff4f18ef4f898804efe9476d21bcb32898d7 92cddfb56aa0be9b3b4c78d52b33f65d836f6893 Ken Kawamoto <ken@kawamoto.co.uk> 1546755658 +0900	commit: Adds a "Boosted" mode for sampling faster.
-92cddfb56aa0be9b3b4c78d52b33f65d836f6893 5c97632629c257f3388b19f36547c7007ffca082 Ken Kawamoto <ken@kawamoto.co.uk> 1546763385 +0900	commit: Add more detailed error code display
-5c97632629c257f3388b19f36547c7007ffca082 c827b74bc4c99c864023298d47aa24dfa24187e9 Ken Kawamoto <ken@kawamoto.co.uk> 1546763503 +0900	commit: Update version code
-c827b74bc4c99c864023298d47aa24dfa24187e9 8a176ae1238f3c8b3c1730953f65e13f9f600f5b Ken Kawamoto <ken@kawamoto.co.uk> 1546763551 +0900	commit: Update version code, with the updated archive.
-8a176ae1238f3c8b3c1730953f65e13f9f600f5b 50fcb657cd618e2af6a71e0dea9ad03a4d3f7752 Ken Kawamoto <ken@kawamoto.co.uk> 1548599341 +0900	commit: Adds support for sound level

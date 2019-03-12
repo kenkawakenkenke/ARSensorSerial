@@ -1,2 +1,0 @@
-0000000000000000000000000000000000000000 8cc07e395909760e08bfa74636088f50d02ac919 Ken Kawamoto <ken@kawamoto.co.uk> 1546580362 +0900	commit (initial): Initial commit (AR Sensor 1.0.1 release)
-8cc07e395909760e08bfa74636088f50d02ac919 390024f94b2b75ac96e3532fbbb43d76d95ec9d0 Ken Kawamoto <ken@kawamoto.co.uk> 1546604465 +0900	commit: Lowers SDK requirements from 28 to 26.
